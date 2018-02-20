@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Customer List</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href="jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <section class="container main-page">
+        <!-- Customers list -->
+        <table class="table table-condensed table-striped ui-widget" id="users-contain">
+            <thead>
+                <tr class="bg-primary">
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Registration Date</th>
+                    <th>Money spent</th>
+                    <th>Orders amount</th>
+                    <th>Manager</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="customersList"></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="9"><button id="addNewCustomerBtn" class="btn btn-success">Add new customer</button></td>
+                </tr>
+            </tfoot>
+        </table>
+
+
+        <!-- Form for new customer addition -->
+        <!-- action= "http://5a85a7b1085fdd00127042ad.mockapi.io/customers" -->
+        <form method="post" id="addNewCustomerForm">
+            <div class="hidden-forms">
+                <input id="customerId" type="hidden" name="customerId">
+                <input id="moneySpent" type="hidden" name="moneySpent" class="moneySpent">
+                <input id="ordersCount" type="hidden" name="ordersCount" class="ordersCount">
+            </div>
+            <div class="form-group">
+                <label for="customerName">Customer's name</label>
+                <input type="text" id="customerName" name="customerName" class="form-control form-field">
+            </div>
+            <div class="form-group">
+                <label for="customerSurname">Customer's Surname</label>
+                <input type="text" id="customerSurname" name="customerSurname" class="form-control form-field">
+            </div>
+            <div class="form-group">
+                <label for="manager">Manager</label>
+                <input type="text" id="manager" name="manager" class="form-control form-field">
+            </div>
+            <div class="button-group">
+                <input type="submit" id="submitNewCustomerBtn" disabled="disabled" value="Save" class="btn btn-success form-btn">
+                <button id="cancelNewCustomerBtn" class="btn form-btn">Cancel</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Modal window for new order -->
+    <section class="container" id="newOrderWindow" style="display: none">
+            <form>
+                <fieldset>
+                    <input type="hidden" name="customerID" class="customerId"
+                    <input type="hidden" name="moneySpent" class="moneySpent">
+                    <input type="hidden" name="ordersCount" class="ordersCount">
+                    <label for="moneyAmount">Money amount</label>
+                    <input type="text" id="moneyAmount" name="moneyAmount" class="modal-form-field text ui-widget-content ui-corner-all">
+                </fieldset>
+            </form>
+    </section>
+
+    <!-- Customers List Template -->
+    <script type="text/appTemplate" id="customersListTemplate">
+        <tr data-id="{{id}}" class="customer-row">
+            <td class="customer-name">{{name}}</td>
+            <td class="customer-surname">{{surname}}</td>
+            <td class="registration-date">{{date}}</td>
+            <td class="money-spent">{{moneySpent}}</td>
+            <td class="orders-amount">{{ordersCount}}</td>
+            <td class="manager">{{manager}}</td>
+            <td><button class="btn btn-success new-order-btn">Add order</button></td>
+            <td><button class="btn btn-warning edit-btn">Edit</button></td>
+            <td><button class="btn btn-danger remove-btn">Delete</button></td>
+        </tr>
+    </script>
+</body>
+</html>

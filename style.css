@@ -1,0 +1,31 @@
+body {
+    font-size: 1em;
+    font-family: Helvetica sans-serif;
+}
+.table {
+    font-size: 1.2em;
+    text-align: center;
+}
+.button-group {
+    text-align: center;
+}
+.form-btn {
+    width: 20%;
+}
+
+table {
+    display: block;
+}
+
+#addNewCustomerForm {
+    display: none;
+}
+
+.show-add-new-customer-form table {
+    display: none;
+}
+
+.show-add-new-customer-form #addNewCustomerForm {
+    display: block;
+}
+
